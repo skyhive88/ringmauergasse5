@@ -211,6 +211,38 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   min-height: 46vh;
 }
 
+/* Home hero: headline group anchored high (in the sky), facts-bar anchored
+   low — independent of each other, so the headline never has to compete
+   with the roofline/facade for contrast. */
+.hero-home {
+  align-items: stretch;
+}
+.hero-home::after {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 14, 11, 0.58) 0%,
+    rgba(15, 14, 11, 0.26) 24%,
+    rgba(15, 14, 11, 0) 42%,
+    rgba(15, 14, 11, 0) 58%,
+    rgba(15, 14, 11, 0.55) 84%,
+    rgba(15, 14, 11, 0.82) 100%
+  );
+}
+.hero-home .hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.hero-home .hero-text {
+  max-width: 46ch;
+}
+.hero-home .eyebrow,
+.hero-home h1,
+.hero-home .hero-sub {
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.55);
+}
+
 /* ---- Key facts bar ---- */
 .facts-bar {
   display: grid;
