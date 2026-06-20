@@ -302,10 +302,12 @@ section { padding: var(--space-5) 0; }
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-2);
+  column-gap: var(--space-2);
+  row-gap: var(--space-4);
 }
-.photo-grid img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; border-radius: var(--radius); }
+.photo-grid img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; border-radius: var(--radius); cursor: zoom-in; transition: opacity 0.15s ease; }
 .photo-grid figure { margin: 0; }
+.photo-grid figure:hover img { opacity: 0.85; }
 .photo-grid figure.tall img { aspect-ratio: 3/4; }
 .photo-grid figcaption {
   font-size: 0.8rem;
@@ -316,7 +318,65 @@ section { padding: var(--space-5) 0; }
   .photo-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 540px) {
-  .photo-grid { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: 1fr; row-gap: var(--space-3); }
+}
+
+/* ---- Lightbox ---- */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 14, 11, 0.92);
+  padding: var(--space-4);
+}
+.lightbox-overlay.open { display: flex; }
+.lightbox-figure {
+  margin: 0;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lightbox-image {
+  display: block;
+  max-width: 90vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+.lightbox-caption {
+  color: #ece8dc;
+  font-size: 0.95rem;
+  margin-top: var(--space-2);
+  text-align: center;
+}
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.5em;
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+}
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover { opacity: 1; }
+.lightbox-close { top: var(--space-3); right: var(--space-3); font-size: 2.2rem; }
+.lightbox-prev { left: var(--space-3); top: 50%; transform: translateY(-50%); font-size: 3rem; }
+.lightbox-next { right: var(--space-3); top: 50%; transform: translateY(-50%); font-size: 3rem; }
+@media (max-width: 700px) {
+  .lightbox-close { font-size: 1.8rem; }
+  .lightbox-prev, .lightbox-next { font-size: 2.2rem; }
 }
 
 /* ---- Distances list ---- */
