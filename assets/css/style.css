@@ -188,7 +188,7 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(33,32,28,0) 35%, rgba(20,19,16,0.82) 100%);
+  background: linear-gradient(180deg, rgba(20,19,16,0) 15%, rgba(20,19,16,0.45) 55%, rgba(20,19,16,0.85) 100%);
 }
 .hero-content {
   position: relative;
@@ -199,13 +199,21 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   margin: 0 auto;
   width: 100%;
 }
-.hero-content .eyebrow { color: #d8d2bd; }
-.hero h1 { color: #fff; max-width: 16ch; }
+.hero-content .eyebrow {
+  color: #f1ecdc;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+}
+.hero h1 {
+  color: #fff;
+  max-width: 16ch;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.55);
+}
 .hero-sub {
   color: #ece8dc;
   font-size: 1.15rem;
   max-width: 42ch;
   margin-top: var(--space-2);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
 }
 .page-hero {
   min-height: 46vh;
