@@ -222,6 +222,20 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   min-height: 46vh;
 }
 
+/* Homepage hero only: stats row pinned to the bottom of the screen,
+   independent of how tall the headline above it is. */
+.hero:not(.page-hero) {
+  align-items: stretch;
+}
+.hero:not(.page-hero) .hero-content {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--space-3);
+}
+.hero:not(.page-hero) .facts-bar {
+  margin-top: auto;
+}
+
 /* ---- Key facts bar ---- */
 .facts-bar {
   display: grid;
