@@ -517,6 +517,13 @@ section { padding: var(--space-5) 0; }
   border-top: 1px solid var(--color-line);
   padding: var(--space-4) 0;
 }
+/* Same idea as the cta-box fix: let the footer's two .container divs
+   span the full viewport width instead of capping at 1180px, while
+   keeping their existing side padding so content doesn't touch the
+   edges. */
+.site-footer .container {
+  max-width: none;
+}
 .footer-grid {
   display: flex;
   justify-content: space-between;
