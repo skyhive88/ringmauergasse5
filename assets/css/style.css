@@ -222,12 +222,15 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   min-height: 46vh;
 }
 
-/* Homepage hero only: stats row pinned to the bottom of the screen,
-   independent of how tall the headline above it is. */
-.hero:not(.page-hero) {
-  align-items: stretch;
-}
+/* Homepage hero only: give hero-content its own min-height matching
+   .hero's, instead of relying on flex "stretch" to propagate that
+   height down from the parent. This is what was inconsistent between
+   languages — relying on stretch left the actual filled height
+   sensitive to how many lines the headline/sub text wrapped to.
+   With hero-content's own height pinned directly, the stats row can
+   be anchored to the bottom edge reliably in both languages. */
 .hero:not(.page-hero) .hero-content {
+  min-height: calc(100vh - 77px);
   display: flex;
   flex-direction: column;
   padding-bottom: var(--space-3);
