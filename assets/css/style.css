@@ -515,7 +515,7 @@ section { padding: var(--space-5) 0; }
 /* ---- Footer ---- */
 .site-footer {
   border-top: 1px solid var(--color-line);
-  padding: var(--space-4) 0;
+  padding: var(--space-4) 0 20px;
 }
 /* Same idea as the cta-box fix: let the footer's two .container divs
    span the full viewport width instead of capping at 1180px. The nav
