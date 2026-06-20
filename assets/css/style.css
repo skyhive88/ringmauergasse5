@@ -171,7 +171,7 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 /* ---- Hero ---- */
 .hero {
   position: relative;
-  min-height: 78vh;
+  min-height: calc(100vh - 77px);
   display: flex;
   align-items: flex-end;
   background: var(--color-ink);
