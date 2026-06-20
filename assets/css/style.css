@@ -277,7 +277,7 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 
 /* ---- Sections ---- */
 section { padding: var(--space-5) 0; }
-.section-tight { padding: var(--space-4) 0; }
+.section-tight { padding: var(--space-5) 0 var(--space-4); }
 .section-alt { background: var(--color-stone-100); }
 .section-dark { background: var(--color-ink); color: #fff; }
 .section-dark p { color: #cfc9ba; }
