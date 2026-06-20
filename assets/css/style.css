@@ -230,6 +230,15 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   position: absolute;
   inset: 0;
 }
+/* The homepage's h1 sits below an eyebrow line (its line-height plus
+   margin-bottom ≈ 36px), so the h1 itself starts ~116px below the
+   header there, not 80px. These pages have no eyebrow, so add that
+   same 36px to the h1 directly to line its top up with the homepage
+   h1 instead of sitting higher. */
+.page-hero h1,
+.section-tight h1 {
+  margin-top: 36px;
+}
 
 /* Homepage hero only: .hero has a hard height (not min-height), so it
    can never exceed the viewport no matter how many lines the headline
