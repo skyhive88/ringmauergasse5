@@ -211,36 +211,57 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   min-height: 46vh;
 }
 
-/* Home hero: headline group anchored high (in the sky), facts-bar anchored
-   low — independent of each other, so the headline never has to compete
-   with the roofline/facade for contrast. */
+/* Home hero: one-line headline set high in the sky, fully clear of the
+   roofline; supporting line + facts-bar grouped low, against the darker
+   base of the photo where contrast is already strong. */
 .hero-home {
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .hero-home::after {
   background: linear-gradient(
     180deg,
     rgba(15, 14, 11, 0.58) 0%,
-    rgba(15, 14, 11, 0.26) 24%,
-    rgba(15, 14, 11, 0) 42%,
-    rgba(15, 14, 11, 0) 58%,
+    rgba(15, 14, 11, 0.22) 22%,
+    rgba(15, 14, 11, 0) 38%,
+    rgba(15, 14, 11, 0) 60%,
     rgba(15, 14, 11, 0.55) 84%,
     rgba(15, 14, 11, 0.82) 100%
   );
 }
-.hero-home .hero-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+.hero-home .hero-headline {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3) 0;
+  box-sizing: border-box;
 }
-.hero-home .hero-text {
-  max-width: 46ch;
+.hero-home .hero-headline .eyebrow {
+  color: #d8d2bd;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.55);
 }
-.hero-home .eyebrow,
-.hero-home h1,
+.hero-home h1 {
+  color: #fff;
+  max-width: none;
+  white-space: nowrap;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.55);
+}
 .hero-home .hero-sub {
-  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+}
+.hero-home .facts-bar .num {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+@media (max-width: 860px) {
+  .hero-home h1 {
+    white-space: normal;
+    max-width: 20ch;
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+  }
 }
 
 /* ---- Key facts bar ---- */
