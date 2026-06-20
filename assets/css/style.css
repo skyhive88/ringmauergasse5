@@ -208,6 +208,9 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   max-width: 16ch;
   text-shadow: 0 3px 20px rgba(0, 0, 0, 0.55);
 }
+.hero:not(.page-hero) h1 {
+  margin-bottom: calc(0.5em + 40px);
+}
 .hero-sub {
   color: #ece8dc;
   font-size: 1.15rem;
