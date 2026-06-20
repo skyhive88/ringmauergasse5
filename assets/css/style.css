@@ -219,7 +219,16 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
 }
 .page-hero {
-  height: 46vh;
+  height: 64vh;
+}
+/* Pin hero-content to fill the box exactly like the homepage hero does,
+   so the h1's gap below the header is the same fixed ~80px on every
+   page (was previously bottom-aligned via flex, which made the gap
+   depend on box height vs content height — and could even clip under
+   short box heights). */
+.page-hero .hero-content {
+  position: absolute;
+  inset: 0;
 }
 
 /* Homepage hero only: .hero has a hard height (not min-height), so it
