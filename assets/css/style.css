@@ -518,11 +518,16 @@ section { padding: var(--space-5) 0; }
   padding: var(--space-4) 0;
 }
 /* Same idea as the cta-box fix: let the footer's two .container divs
-   span the full viewport width instead of capping at 1180px, while
-   keeping their existing side padding so content doesn't touch the
-   edges. */
+   span the full viewport width instead of capping at 1180px. The nav
+   (still capped at max-width:var(--container), centered) keeps its
+   text the same var(--space-3) from the edge only on narrow screens —
+   on wide screens its text sits much further in, at (100vw-1180px)/2
+   + var(--space-3), because of the centering margin. Reproduce that
+   same formula here so footer text lines up with nav text at any
+   viewport width instead of sitting right at the edge. */
 .site-footer .container {
   max-width: none;
+  padding: 0 max(var(--space-3), calc((100vw - var(--container)) / 2 + var(--space-3)));
 }
 .footer-grid {
   display: flex;
