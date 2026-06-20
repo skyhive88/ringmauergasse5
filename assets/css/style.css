@@ -171,7 +171,7 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 /* ---- Hero ---- */
 .hero {
   position: relative;
-  min-height: calc(100vh - 77px);
+  height: calc(100vh - 77px);
   display: flex;
   align-items: flex-end;
   background: var(--color-ink);
@@ -219,24 +219,26 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
 }
 .page-hero {
-  min-height: 46vh;
+  height: 46vh;
 }
 
-/* Homepage hero only: give hero-content its own min-height matching
-   .hero's, instead of relying on flex "stretch" to propagate that
-   height down from the parent. This is what was inconsistent between
-   languages — relying on stretch left the actual filled height
-   sensitive to how many lines the headline/sub text wrapped to.
-   With hero-content's own height pinned directly, the stats row can
-   be anchored to the bottom edge reliably in both languages. */
+/* Homepage hero only: .hero has a hard height (not min-height), so it
+   can never exceed the viewport no matter how many lines the headline
+   or sub-text wrap to. Earlier attempts used flexbox "stretch" plus
+   margin-top:auto on the facts bar to anchor it to the bottom of that
+   box — but that propagation behaved inconsistently between German
+   and English. Pinning the facts bar with position:absolute instead
+   is a direct, fixed calculation (not derived from content height at
+   all), so it can't diverge between languages. */
 .hero:not(.page-hero) .hero-content {
-  min-height: calc(100vh - 77px);
-  display: flex;
-  flex-direction: column;
-  padding-bottom: var(--space-3);
+  position: absolute;
+  inset: 0;
 }
 .hero:not(.page-hero) .facts-bar {
-  margin-top: auto;
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: 20px;
 }
 
 /* ---- Key facts bar ---- */
