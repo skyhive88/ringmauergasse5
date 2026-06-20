@@ -439,6 +439,14 @@ section { padding: var(--space-5) 0; }
 .distance-list .row span:last-child { font-family: var(--font-serif); color: var(--color-ink); }
 
 /* ---- CTA / Contact ---- */
+/* The section wrapping each cta-box is just <section><div class="container">
+   <div class="cta-box">...</div></div></section> on every page — target
+   that specific container so the dark band spans the full viewport width,
+   without affecting any other .container usage on the site. */
+.container:has(> .cta-box) {
+  max-width: none;
+  padding: 0;
+}
 .cta-box {
   background: var(--color-ink);
   color: #fff;
