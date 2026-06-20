@@ -171,7 +171,7 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 /* ---- Hero ---- */
 .hero {
   position: relative;
-  height: calc(100vh - 77px);
+  min-height: calc(100vh - 77px);
   display: flex;
   align-items: flex-end;
   background: var(--color-ink);
@@ -219,23 +219,21 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
 }
 .page-hero {
-  height: 46vh;
+  min-height: 46vh;
 }
 
-/* Homepage hero only: .hero now has a hard `height` (not min-height),
-   so it can never grow past the viewport regardless of how many lines
-   the headline/sub text wrap to in either language — this is what was
-   pushing the stats row below the fold. align-items:stretch fills
-   hero-content to exactly that fixed height, and margin-top:auto on
-   .facts-bar pins the stats row flush to the bottom, with a 20px gap
-   above the very edge of the screen. */
-.hero:not(.page-hero) {
-  align-items: stretch;
-}
+/* Homepage hero only: give hero-content its own min-height matching
+   .hero's, instead of relying on flex "stretch" to propagate that
+   height down from the parent. This is what was inconsistent between
+   languages — relying on stretch left the actual filled height
+   sensitive to how many lines the headline/sub text wrapped to.
+   With hero-content's own height pinned directly, the stats row can
+   be anchored to the bottom edge reliably in both languages. */
 .hero:not(.page-hero) .hero-content {
+  min-height: calc(100vh - 77px);
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
+  padding-bottom: var(--space-3);
 }
 .hero:not(.page-hero) .facts-bar {
   margin-top: auto;
